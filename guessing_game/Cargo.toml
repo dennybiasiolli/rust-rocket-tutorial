@@ -1,6 +1,5 @@
-workspace = { members = ["guessing_game"] }
 [package]
-name = "rust-rocket-tutorial"
+name = "guessing_game"
 version = "0.1.0"
 edition = "2021"
 
