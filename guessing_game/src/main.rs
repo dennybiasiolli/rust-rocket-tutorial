@@ -10,20 +10,33 @@ fn main() {
     let max = 10;
     let secret_number = rand::thread_rng().gen_range(min..=max);
 
-    // getting the user's guess
-    println!("Please input your guess.");
-    let mut guess = String::new();
-    io::stdin()
-        .read_line(&mut guess)
-        .expect("Failed to read line");
-    let guess: u32 = guess.trim().parse().expect("Please type a number!");
+    loop {
+        // getting the user's guess
+        println!("Please input your guess [type \"quit\" to exit]:");
+        let mut guess = String::new();
+        io::stdin()
+            .read_line(&mut guess)
+            .expect("Failed to read line");
+        let guess: u32 = match guess.trim().parse() {
+            Ok(num) => num,
+            Err(_) => {
+                if guess.trim() == "quit" {
+                    println!("Quitting...");
+                    break;
+                } else {
+                    println!("Please type a number between {} and {}.", min, max);
+                    continue;
+                }
+            },
+        };
 
-    // printing the user's guess and the secret number
-    println!("The secret number is: {secret_number}");
-    println!("You guessed: {guess}");
-    match guess.cmp(&secret_number) {
-        Ordering::Less => println!("Too small!"),
-        Ordering::Greater => println!("Too big!"),
-        Ordering::Equal => println!("You win!"),
+        match guess.cmp(&secret_number) {
+            Ordering::Less => println!("{guess} is too small!"),
+            Ordering::Greater => println!("{guess} is too big!"),
+            Ordering::Equal => {
+                println!("You win!");
+                break;
+            },
+        }
     }
 }
