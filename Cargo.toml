@@ -1,4 +1,4 @@
-workspace = { members = [ "backyard", "enums", "functions","guessing_game", "ownership", "slices", "structs", "testing-crates-1", "variables"] }
+workspace = { members = [ "backyard", "enums", "functions","guessing_game", "ownership", "restaurant", "slices", "structs", "testing-crates-1", "variables"] }
 [package]
 name = "rust-rocket-tutorial"
 version = "0.1.0"
