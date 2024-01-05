@@ -1,3 +1,4 @@
+mod exercises;
 mod hashmaps;
 mod strings;
 mod vectors;
@@ -15,4 +16,7 @@ fn main() {
     hashmaps::test2();
     hashmaps::test3();
     hashmaps::test4();
+
+    exercises::ex1();
+    exercises::ex2();
 }
