@@ -1,3 +1,4 @@
+mod strings;
 mod vectors;
 
 fn main() {
@@ -5,4 +6,7 @@ fn main() {
     vectors::test2();
     vectors::test3();
     vectors::test4();
+
+    strings::test1();
+    strings::test2();
 }
