@@ -1,3 +1,4 @@
+mod hashmaps;
 mod strings;
 mod vectors;
 
@@ -9,4 +10,9 @@ fn main() {
 
     strings::test1();
     strings::test2();
+
+    hashmaps::test1();
+    hashmaps::test2();
+    hashmaps::test3();
+    hashmaps::test4();
 }
