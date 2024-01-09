@@ -117,3 +117,20 @@ fn rectanble_area_example() {
 fn area(rectangle: &Rectangle) -> u32 {
     rectangle.width * rectangle.height
 }
+
+#[cfg(test)]
+mod tests {
+    #[test]
+    fn it_works() {
+        let larger = super::Rectangle {
+            width: 30,
+            height: 50,
+        };
+        let smaller = super::Rectangle {
+            width: 10,
+            height: 40,
+        };
+        assert!(larger.can_hold(&smaller));
+        assert!(!smaller.can_hold(&larger));
+    }
+}
