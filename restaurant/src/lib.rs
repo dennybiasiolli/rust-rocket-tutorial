@@ -49,3 +49,14 @@ pub fn eat_at_restaurant() {
     let _order1 = back_of_house::Appetizer::Soup;
     let _order2 = back_of_house::Appetizer::Salad;
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn summer_breakfast() {
+        let summer_breakfast = back_of_house::Breakfast::summer("Foo");
+        assert_eq!("Foo", summer_breakfast.toast);
+    }
+}
