@@ -1,12 +1,25 @@
-workspace = { members = [ "adder", "art", "backyard", "closures-and-iterators", "collections", "enums", "errors", "functions", "generics","guessing_game", "minigrep", "my_crate", "ownership", "restaurant", "slices", "structs", "testing-crates-1", "tz", "variables"] }
-[package]
-name = "rust-rocket-tutorial"
-version = "0.1.0"
-edition = "2021"
-
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
-
-[dependencies]
+[workspace]
+members = [
+    "adder",
+    "art",
+    "backyard",
+    "closures-and-iterators",
+    "collections",
+    "enums",
+    "errors",
+    "functions",
+    "generics","guessing_game",
+    "minigrep",
+    "my_crate",
+    "ownership",
+    "restaurant",
+    "slices",
+    "structs",
+    "testing-crates-1",
+    "tz",
+    "variables"
+]
+resolver = "2"
 
 [profile.dev]
 opt-level = 1

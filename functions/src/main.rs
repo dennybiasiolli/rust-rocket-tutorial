@@ -16,6 +16,8 @@ fn main() {
     for number in 1..=10 {
         println!("Fibonacci {number} is {}", fibonacci(number));
     }
+
+    external_call();
 }
 
 fn another_function(value: i32, unit_label: char) {
@@ -89,7 +91,7 @@ fn fors() {
     for element in a.iter() {
         println!("the value is: {element}");
     }
-    
+
     for number in (1..4).rev() {
         println!("{number}!");
     }
@@ -101,4 +103,8 @@ fn fibonacci(n: u32) -> u32 {
         return n;
     }
     fibonacci(n - 1) + fibonacci(n - 2)
+}
+
+fn external_call() {
+    println!("adder::add_two(2): {}", adder::add_two(2));
 }

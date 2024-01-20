@@ -46,6 +46,9 @@ version = "0.1.0"
 [[package]]
 name = "functions"
 version = "0.1.0"
+dependencies = [
+ "adder",
+]
 
 [[package]]
 name = "generics"
@@ -118,10 +121,6 @@ dependencies = [
 
 [[package]]
 name = "restaurant"
-version = "0.1.0"
-
-[[package]]
-name = "rust-rocket-tutorial"
 version = "0.1.0"
 
 [[package]]
