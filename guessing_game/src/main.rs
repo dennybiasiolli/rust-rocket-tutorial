@@ -2,7 +2,7 @@ use rand::Rng;
 use std::io;
 
 fn print_number_request(request_string: String) {
-    println!("{request_string} [type \"quit\" to exit]:");
+    println!("{request_string} [type \"q\", \"quit\" or CTRL+C to exit]:");
 }
 
 fn main() {
@@ -21,24 +21,31 @@ fn main() {
             .read_line(&mut guess)
             .expect("Failed to read line");
         let guess: u32 = match guess.trim().parse() {
-            Ok(num) => {
-                match num {
-                    num if (min..=max).contains(&num) => num,
-                    _ => {
-                        print_number_request(format!("Please type a number between {min} and {max}."));
-                        continue;
-                    },
+            Ok(num) => match num {
+                num if (min..=max).contains(&num) => num,
+                42 => {
+                    println!(
+                        "\
+                        42 is the answer to life, the universe and everything.\n\
+                        We are sorry, but you cannot guess this number.\n\
+                        Please type a number between {min} and {max}."
+                    );
+                    continue;
+                }
+                _ => {
+                    print_number_request(format!("Please type a number between {min} and {max}."));
+                    continue;
                 }
             },
             Err(_) => {
-                if guess.trim() == "quit" {
+                if ["quit", "q"].contains(&guess.trim()) {
                     println!("Quitting...");
                     break;
                 } else {
                     print_number_request(format!("Please type a number between {min} and {max}."));
                     continue;
                 }
-            },
+            }
         };
 
         let diff = guess as i32 - secret_number as i32;
@@ -46,7 +53,7 @@ fn main() {
             0 => {
                 println!("You guessed the secret number!");
                 break;
-            },
+            }
             -2..=2 => println!("You were close!"),
             _ => println!("You were way off!"),
         }
