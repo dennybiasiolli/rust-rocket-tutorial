@@ -128,6 +128,10 @@ name = "slices"
 version = "0.1.0"
 
 [[package]]
+name = "smart-pointers"
+version = "0.1.0"
+
+[[package]]
 name = "structs"
 version = "0.1.0"
 
