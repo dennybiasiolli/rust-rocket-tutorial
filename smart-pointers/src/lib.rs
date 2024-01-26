@@ -1,5 +1,6 @@
 mod box_examples;
 mod deref_traits;
+mod references;
 
 pub fn run() {
     box_examples::box1();
@@ -13,4 +14,9 @@ pub fn run() {
 
     deref_traits::cleanup1();
     deref_traits::cleanup2();
+
+    references::example1();
+    references::example2();
+    references::example3();
+    references::example4_unrelated();
 }
