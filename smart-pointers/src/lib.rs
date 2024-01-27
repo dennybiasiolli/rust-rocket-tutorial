@@ -19,4 +19,5 @@ pub fn run() {
     references::example2();
     references::example3();
     references::example4_unrelated();
+    references::example5();
 }
