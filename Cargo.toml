@@ -5,6 +5,7 @@ members = [
     "backyard",
     "closures-and-iterators",
     "collections",
+    "concurrency",
     "enums",
     "errors",
     "functions",
