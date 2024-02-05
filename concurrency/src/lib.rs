@@ -30,3 +30,45 @@ pub mod threads {
         handle.join().unwrap();
     }
 }
+
+pub mod channels {
+    use std::sync::mpsc;
+    use std::thread;
+    use std::time::Duration;
+
+    fn create_thread(tx: mpsc::Sender<String>, vals: Vec<String>) -> thread::JoinHandle<()> {
+        return thread::spawn(move || {
+            for val in vals {
+                tx.send(val).unwrap();
+                thread::sleep(Duration::from_millis(200));
+            }
+        })
+    }
+
+    pub fn test1() {
+        let (tx, rx) = mpsc::channel();
+
+        let vals = vec![
+            String::from("hi"),
+            String::from("from"),
+            String::from("the"),
+            String::from("thread"),
+        ];
+        create_thread(tx.clone(), vals);
+
+        let vals = vec![
+            String::from("more"),
+            String::from("messages"),
+            String::from("for"),
+            String::from("you"),
+        ];
+        create_thread(tx, vals);
+
+        let handle = thread::spawn(move || {
+            for received in rx {
+                println!("Got: {}", received);
+            }
+        });
+        handle.join().unwrap();
+    }
+}
