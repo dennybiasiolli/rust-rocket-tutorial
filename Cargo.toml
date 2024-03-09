@@ -3,6 +3,7 @@ members = [
     "adder",
     "art",
     "backyard",
+    "blog",
     "closures-and-iterators",
     "collections",
     "concurrency",
