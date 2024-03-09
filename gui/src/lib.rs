@@ -1,14 +1,39 @@
-pub fn add(left: usize, right: usize) -> usize {
-    left + right
+pub trait Draw {
+    fn draw(&self);
 }
 
-#[cfg(test)]
-mod tests {
-    use super::*;
+pub struct Screen {
+    pub components: Vec<Box<dyn Draw>>,
+}
+impl Screen {
+    pub fn run(&self) {
+        for component in self.components.iter() {
+            component.draw();
+        }
+    }
+}
+// same as
+// pub struct Screen<T: Draw> {
+//     pub components: Vec<T>,
+// }
+// impl<T> Screen<T>
+// where
+//     T: Draw,
+// {
+//     pub fn run(&self) {
+//         for component in self.components.iter() {
+//             component.draw();
+//         }
+//     }
+// }
 
-    #[test]
-    fn it_works() {
-        let result = add(2, 2);
-        assert_eq!(result, 4);
+pub struct Button {
+    pub width: u32,
+    pub height: u32,
+    pub label: String,
+}
+impl Draw for Button {
+    fn draw(&self) {
+        print!("Button: width={}, height={}, label={}\n", self.width, self.height, self.label);
     }
 }
